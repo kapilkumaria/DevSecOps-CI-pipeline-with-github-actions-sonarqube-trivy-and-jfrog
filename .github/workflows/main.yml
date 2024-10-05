@@ -92,7 +92,7 @@ jobs:
       run: |
         jfrog rt config --url=${{ secrets.JFROG_URL }} --user=${{ secrets.JFROG_USER }} --apikey=${{ secrets.JFROG_API_KEY }}
 
-    # Step 11: Upload JAR file to JFrog Artifactory
+    # Step 11: Upload JAR file too JFrog Artifactory
     - name: Upload artifact to JFrog Artifactory
       run: |
         jfrog rt upload "target/*.jar" "your-repository-name/path/in/artifactory/"
