@@ -109,7 +109,7 @@ jobs:
     - name: Upload Maven artifacts
       run: |
               
-              jfrog rt u "target/*.jar" ${ARTIFACTORY_REPO}/myapp/1.0.0/ --server-id=artifactory-server-kk --url ${{ secrets.ARTIFACTORY_URL }}
+              jfrog rt u "target/*.jar" ${ARTIFACTORY_REPO}/ --url ${{ secrets.ARTIFACTORY_URL }}
 
     # Optional: Cleanup JFrog configuration
     - name: Cleanup JFrog config
