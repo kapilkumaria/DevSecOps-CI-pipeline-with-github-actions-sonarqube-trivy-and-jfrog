@@ -100,4 +100,4 @@ jobs:
         ARTIFACTORY_REPO: ${{ secrets.ARTIFACTORY_REPO }}  # Access the Artifactory repo from GitHub secrets
       run: |
         
-        jfrog rt u target/*.jar $ARTIFACTORY_REPO/$(date +%Y-%m-%d)/ --build-name=my-build --build-number=$(date +%Y%m%d%H%M%S) --verbose
+        jfrog rt u target/*.jar $ARTIFACTORY_REPO/$(date +%Y-%m-%d)/ --build-name=my-build --build-number=$(date +%Y%m%d%H%M%S)
