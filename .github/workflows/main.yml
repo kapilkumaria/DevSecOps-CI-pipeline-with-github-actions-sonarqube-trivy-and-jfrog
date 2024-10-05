@@ -14,7 +14,7 @@ jobs:
     - name: Checkout Code
       uses: actions/checkout@v3
       with:
-        repository: 'kapilkumaria/DevSecOps-CI-pipeline-with-github-actions-sonarqube-trivy-and-jfrog.git'
+        repository: 'kapilkumaria/DevSecOps-CI-pipeline-with-github-actions-sonarqube-trivy-and-jfrog'
         ref: 'main'
 
     # Step 2: Set up Java and Maven
