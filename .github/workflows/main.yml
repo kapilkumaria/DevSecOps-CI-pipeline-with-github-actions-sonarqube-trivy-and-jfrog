@@ -110,7 +110,7 @@ jobs:
     - name: Upload Maven artifacts
       run: |
               
-              jfrog rt u "target/*.jar" ${ARTIFACTORY_REPO}/$(date +%Y-%m-%d)/ --build-name=my-build --build-number=12 --url ${{ secrets.JFROG_URL }}
+              jfrog rt u "target/*.jar" ${ARTIFACTORY_REPO}/$(date +%Y-%m-%d)/ --build-name=my-build --build-number=12 --url http://34.203.117.224:8082
               
 
 
