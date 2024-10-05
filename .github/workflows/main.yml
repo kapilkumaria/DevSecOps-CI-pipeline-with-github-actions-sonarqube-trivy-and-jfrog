@@ -46,6 +46,8 @@ jobs:
          echo "JAR file not found. Build may have failed."
          exit 1
        fi
+       
+       ls target
 
 
     # Step 4: Run tests
