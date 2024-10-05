@@ -130,9 +130,9 @@ jobs:
          
            # Add new configuration for the Artifactory servers
              jfrog config add artifactory-server-kk --artifactory-url=${{ secrets.JFROG_URL }} --user=${{ secrets.JFROG_USER }} --password=${{ secrets.JFROG_PASSWORD }} --interactive=false
-             
-
-             
+             jfrog config show
+            
+            
         
     # Upload Maven artifacts to Artifactory
     - name: Upload Maven artifacts
