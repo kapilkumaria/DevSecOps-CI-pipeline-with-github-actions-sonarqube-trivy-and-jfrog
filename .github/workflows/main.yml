@@ -66,29 +66,29 @@ jobs:
          name: surefire-reports
          path: target/surefire-reports/*.xml
 
-    # Step 6: Archive the built JAR file
-    - name: Archive JAR file
-      uses: actions/upload-artifact@v3
-      with:
-         name: built-name
-         path: target/*.jar
+    # # Step 6: Archive the built JAR file
+    # - name: Archive JAR file
+    #   uses: actions/upload-artifact@v3
+    #   with:
+    #      name: built-name
+    #      path: target/*.jar
 
     # # Step 3: Unzip the artifact to get the JAR
     # - name: Unzip the artifact
     #   run: unzip built-name -d extracted
 
     # Step 3: List files in the current directory to debug (optional)
-    - name: List files after download
-      run: ls -alh
+    # - name: List files after download
+    #   run: ls -alh
 
-    # Step 4: Unzip the artifact to get the JAR
-    - name: Unzip the artifact
-      run: |
-        unzip built-name.zip -d extracted || echo "Unzip failed; file not found"
+    # # Step 4: Unzip the artifact to get the JAR
+    # - name: Unzip the artifact
+    #   run: |
+    #     unzip built-name.zip -d extracted || echo "Unzip failed; file not found"
     
     # Step 5: List extracted files for verification (optional)
-    - name: List extracted files
-      run: ls -R extracted/
+    # - name: List extracted files
+    #   run: ls -R extracted/
 
     # Step 8: SonarQube Scan
     - name: SonarQube Scan
