@@ -103,7 +103,7 @@ jobs:
       run: |
               
               
-              jfrog rt u "target/*.jar" "${{ secrets.JFROG_URL }}/${{ secrets.ARTIFACTORY_REPO }}/$(date +%Y-%m-%d)/" --build-name=my-build --build-number=12
+              jfrog rt u "target/*.jar" "${{ secrets.JFROG_URL }}/${{ secrets.ARTIFACTORY_REPO }}/$(date +%Y-%m-%d)/" --build-name=my-build --build-number=12 --url=${JFROG_URL} 
               
 
     # Optional: Cleanup JFrog configuration
