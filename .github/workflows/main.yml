@@ -89,6 +89,7 @@ jobs:
         JFROG_URL: ${{ secrets.JFROG_URL }}   # Store the JFrog URL in GitHub secrets
         JFROG_USER: ${{ secrets.JFROG_USER }} # Store the JFrog username in GitHub secrets
         JFROG_API_KEY: ${{ secrets.JFROG_API_TOKEN }} # Store the JFrog API key in GitHub secrets
+
       run: |
 
          # Remove the old configuration if it exists, ignore errors if it doesn't
@@ -103,13 +104,15 @@ jobs:
     # # Configure JFrog Artifactory using environment variables
     # - name: Configure JFrog CLI
     #   run: |
-    #    ./jfrog rt config --url ${{ secrets.ARTIFACTORY_URL }} --user ${{ secrets.ARTIFACTORY_USER }} --password ${{ secrets.ARTIFACTORY_PASSWORD }}
+    #    ./jfrog rt config --url ${{ secrets.JFROG_URL }} --user ${{ secrets.ARTIFACTORY_USER }} --password ${{ secrets.ARTIFACTORY_PASSWORD }}
 
     # Upload Maven artifacts to Artifactory
     - name: Upload Maven artifacts
       run: |
               
-              jfrog rt u "target/*.jar" ${ARTIFACTORY_REPO}/$(date +%Y-%m-%d)/ --build-name=my-build --build-number=12 --url ${{ secrets.ARTIFACTORY_URL }}
+              jfrog rt u "target/*.jar" ${ARTIFACTORY_REPO}/$(date +%Y-%m-%d)/ --build-name=my-build --build-number=12 --url ${{ secrets.JFROG_URL }}
+              
+
 
     # Optional: Cleanup JFrog configuration
     - name: Cleanup JFrog config
