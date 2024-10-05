@@ -24,12 +24,14 @@ jobs:
         java-version: '17'
         distribution: 'adopt'
 
-    # Step 3: Install Maven 3.9.2
+    # Step 3: Download and Install Maven 3.9.2
     - name: Install Maven 3.9.2
       run: |
-        sudo apt-get update
-        sudo apt-get install -y maven
-        mvn --version
+        sudo apt-get remove maven -y
+        curl -o /tmp/apache-maven-3.9.2-bin.tar.gz https://archive.apache.org/dist/maven/maven-3/3.9.2/binaries/apache-maven-3.9.2-bin.tar.gz
+        sudo tar xf /tmp/apache-maven-3.9.2-bin.tar.gz -C /opt/
+        sudo ln -s /opt/apache-maven-3.9.2/bin/mvn /usr/bin/mvn
+        mvn --version  # Ensure the correct version of Maven is installed
 
     # Step 3: Build the project using Maven (pre-installed)
     - name: Build the package
