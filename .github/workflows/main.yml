@@ -27,7 +27,8 @@ jobs:
     # Step 3: Download and Install Maven 3.9.2
     - name: Install Maven 3.9.2
       run: |
-        sudo apt-get remove maven -y
+        # Remove existing symbolic link for mvn if it exists
+        if [ -L /usr/bin/mvn ]; then sudo rm /usr/bin/mvn; fi
         curl -o /tmp/apache-maven-3.9.2-bin.tar.gz https://archive.apache.org/dist/maven/maven-3/3.9.2/binaries/apache-maven-3.9.2-bin.tar.gz
         sudo tar xf /tmp/apache-maven-3.9.2-bin.tar.gz -C /opt/
         sudo ln -s /opt/apache-maven-3.9.2/bin/mvn /usr/bin/mvn
