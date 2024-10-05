@@ -70,7 +70,7 @@ jobs:
     - name: Archive JAR file
       uses: actions/upload-artifact@v3
       with:
-         name: built-jar
+         name: built-name
          path: target/*.jar
 
     # Step 8: SonarQube Scan
