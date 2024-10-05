@@ -82,7 +82,7 @@ jobs:
       run: |
         curl -fL https://getcli.jfrog.io | sh
         sudo mv jfrog /usr/local/bin/jfrog
-        jfrog --version  # Verify JFrog CLI installation
+        jfrog --version  # Verify JFrog CLI installations
 
     # Step 10: Configure JFrog CLI
     - name: Configure JFrog CLI
