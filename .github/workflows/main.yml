@@ -152,4 +152,5 @@ jobs:
     # Optional: Cleanup JFrog configuration
     - name: Cleanup JFrog config
       run: |
-        jfrog rt config delete
+        
+        jfrog config remove artifactory-server-kk
