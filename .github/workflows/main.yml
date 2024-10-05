@@ -60,3 +60,14 @@ jobs:
       with:
          name: built-jar
          path: target/*.jar
+
+    # # Step 8: SonarQube Scan
+    # - name: SonarQube Scan
+    #   env:
+    #     SONAR_TOKEN: ${{ secrets.SONARQUBE_AUTH_TOKEN }}
+    #     SONAR_HOST_URL: ${{ secrets.SONARQUBE_URL }}
+    #   run: |
+    #     mvn sonar:sonar \
+    #       -Dsonar.projectKey=your-project-key \
+    #       -Dsonar.host.url=${{ secrets.SONARQUBE_URL }} \
+    #       -Dsonar.login=${{ secrets.SONARQUBE_AUTH_TOKEN }}
