@@ -106,7 +106,7 @@ jobs:
 
       run: |
          
-           # Remove the old configuration if it exists, ignore errors if it doesn't
+           # Remove the old configuration if it exists, ignore errors if it doesn't.
              jfrog config rm artifactory-server-kk --quiet || true
          
            # Add new configuration for the Artifactory server
