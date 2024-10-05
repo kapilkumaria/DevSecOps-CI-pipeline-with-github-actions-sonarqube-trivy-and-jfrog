@@ -108,7 +108,7 @@ jobs:
     # Upload Maven artifacts to Artifactory
     - name: Upload Maven artifacts
       run: |
-          jfrog rt u "target/*.jar" ${{ secrets.ARTIFACTORY_REPO }}/
+              jfrog rt u "target/*.jar" ${ARTIFACTORY_REPO}/ --server-id=artifactory-server-kk
 
     # Optional: Cleanup JFrog configuration
     - name: Cleanup JFrog config
