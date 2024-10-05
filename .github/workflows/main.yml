@@ -97,15 +97,7 @@ jobs:
 
          # Add new configuration for the Artifactory server
            jfrog config add artifactory-server-kk --artifactory-url=${ARTIFACTORY_URL} --user=${ARTIFACTORY_USER} --password=${JFROG_API_KEY} --interactive=false
-
-        #  jfrog config rm artifactory-server-kk --quiet || true
-        #  jfrog config add artifactory-server-kk --artifactory-url=${ARTIFACTORY_URL} --user=${ARTIFACTORY_USER} --password=${ARTIFACTORY_PASSWORD} --interactive=false
-
-    # # Configure JFrog Artifactory using environment variables
-    # - name: Configure JFrog CLI
-    #   run: |
-    #    ./jfrog rt config --url ${{ secrets.JFROG_URL }} --user ${{ secrets.ARTIFACTORY_USER }} --password ${{ secrets.ARTIFACTORY_PASSWORD }}
-
+        
     # Upload Maven artifacts to Artifactory
     - name: Upload Maven artifacts
       run: |
@@ -113,37 +105,7 @@ jobs:
               jfrog rt u "target/*.jar" ${ARTIFACTORY_REPO}/$(date +%Y-%m-%d)/ --build-name=my-build --build-number=12 --url http://34.203.117.224:8082
               
 
-
     # Optional: Cleanup JFrog configuration
     - name: Cleanup JFrog config
       run: |
         ./jfrog rt config delete
-
-
-
-    # # Step 10: Configure JFrog CLI
-    # - name: Configure JFrog CLI
-    #   env:
-    #     JFROG_URL: ${{ secrets.JFROG_URL }}   # Store the JFrog URL in GitHub secrets
-    #     JFROG_USER: ${{ secrets.JFROG_USER }} # Store the JFrog username in GitHub secrets
-    #     JFROG_API_KEY: ${{ secrets.JFROG_API_KEY }} # Store the JFrog API key in GitHub secrets
-    #   run: |
-    #      jfrog config rm artifactory-server-kk --quiet || true
-    #      jfrog config add artifactory-server-kk --artifactory-url=${ARTIFACTORY_URL} --user=${ARTIFACTORY_USER} --password=${ARTIFACTORY_PASSWORD} --interactive=false
-
-    # # Step 11: Upload JAR file too JFrog Artifactory
-    # - name: Upload artifact to JFrog Artifactory
-    #   env:
-    #     JFROG_CLI_LOG_LEVEL: DEBUG  # Enable detailed logging
-    #     ARTIFACTORY_REPO: ${{ secrets.ARTIFACTORY_REPO }}  # Access the Artifactory repo from GitHub secrets
-    #   run: |
-        
-    #     jfrog rt u target/*.jar $ARTIFACTORY_REPO/$(date +%Y-%m-%d)/ --build-name=my-build --build-number=$(date +%Y%m%d%H%M%S)
-
-    # Step 11: Upload JAR file to JFrog Artifactory
-    # - name: Upload artifact to JFrog Artifactory
-    #   env:
-    #     ARTIFACTORY_REPO: ${{ secrets.ARTIFACTORY_REPO }}  # Access the Artifactory repo from GitHub secrets
-    #     JFROG_URL: ${{ secrets.JFROG_URL }}  # Access the JFrog URL from GitHub secrets
-    #   run: |
-    #     jfrog rt u target/*.jar $ARTIFACTORY_REPO/$(date +%Y-%m-%d)/ --url=$JFROG_URL --build-name=my-build --build-number=$(date +%Y%m%d%H%M%S)
