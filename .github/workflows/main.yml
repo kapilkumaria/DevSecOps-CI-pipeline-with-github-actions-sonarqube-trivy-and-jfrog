@@ -144,7 +144,12 @@ jobs:
                            
               
 
+    # # Optional: Cleanup JFrog configuration
+    # - name: Cleanup JFrog config
+    #   run: |
+    #     ./jfrog rt config delete
+
     # Optional: Cleanup JFrog configuration
     - name: Cleanup JFrog config
       run: |
-        ./jfrog rt config delete
+        jfrog rt config delete
