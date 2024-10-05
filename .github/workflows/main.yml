@@ -90,8 +90,15 @@ jobs:
         JFROG_USER: ${{ secrets.JFROG_USER }} # Store the JFrog username in GitHub secrets
         JFROG_API_KEY: ${{ secrets.JFROG_API_KEY }} # Store the JFrog API key in GitHub secrets
       run: |
-         jfrog config rm artifactory-server-kk --quiet || true
-         jfrog config add artifactory-server-kk --artifactory-url=${ARTIFACTORY_URL} --user=${ARTIFACTORY_USER} --password=${ARTIFACTORY_PASSWORD} --interactive=false
+
+         # Remove the old configuration if it exists, ignore errors if it doesn't
+           jfrog config rm artifactory-server-kk --quiet || true
+
+         # Add new configuration for the Artifactory server
+           jfrog config add artifactory-server-kk --artifactory-url=${ARTIFACTORY_URL} --user=${ARTIFACTORY_USER} --password=${JFROG_API_KEY} --interactive=false
+
+        #  jfrog config rm artifactory-server-kk --quiet || true
+        #  jfrog config add artifactory-server-kk --artifactory-url=${ARTIFACTORY_URL} --user=${ARTIFACTORY_USER} --password=${ARTIFACTORY_PASSWORD} --interactive=false
 
     # # Configure JFrog Artifactory using environment variables
     # - name: Configure JFrog CLI
