@@ -41,4 +41,8 @@ jobs:
     # Step 4: Run tests
     - name: Run tests
       run: mvn test
-    
+    - name: Archive test reports
+      uses: actions/upload-artifact@v2
+      with:
+        name: surefire-reports
+        path: target/surefire-reports/*.xml
