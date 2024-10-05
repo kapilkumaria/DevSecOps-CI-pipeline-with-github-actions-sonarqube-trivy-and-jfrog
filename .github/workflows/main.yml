@@ -91,18 +91,19 @@ jobs:
         JFROG_API_KEY: ${{ secrets.JFROG_API_TOKEN }} # Store the JFrog API key in GitHub secrets
 
       run: |
-
-         # Remove the old configuration if it exists, ignore errors if it doesn't
-           jfrog config rm artifactory-server-kk --quiet || true
-
-         # Add new configuration for the Artifactory server
-           jfrog config add artifactory-server-kk --artifactory-url=${ARTIFACTORY_URL} --user=${ARTIFACTORY_USER} --password=${JFROG_API_KEY} --interactive=false
+         
+           # Remove the old configuration if it exists, ignore errors if it doesn't
+             jfrog config rm artifactory-server-kk --quiet || true
+         
+           # Add new configuration for the Artifactory server
+             jfrog config add artifactory-server-kk --artifactory-url=${ARTIFACTORY_URL} --user=${ARTIFACTORY_USER} --password=${JFROG_API_KEY} --interactive=false
         
     # Upload Maven artifacts to Artifactory
     - name: Upload Maven artifacts
       run: |
               
-              jfrog rt u "target/*.jar" ${ARTIFACTORY_REPO}/$(date +%Y-%m-%d)/ --build-name=my-build --build-number=12 --url http://34.203.117.224:8082
+              
+              jfrog rt u "target/*.jar" "${{ secrets.JFROG_URL }}/${{ secrets.ARTIFACTORY_REPO }}/$(date +%Y-%m-%d)/" --build-name=my-build --build-number=12
               
 
     # Optional: Cleanup JFrog configuration
