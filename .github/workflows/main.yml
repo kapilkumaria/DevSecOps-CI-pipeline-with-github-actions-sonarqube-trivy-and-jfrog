@@ -134,8 +134,8 @@ jobs:
     - name: Upload Maven artifacts
       run: |
               
-              jfrog rt u "target/*.jar" "${{ secrets.ARTIFACTORY_REPO }}/$(date +%Y-%m-%d)/" --build-name=my-build --build-number=12 --server-id=artifactory-server-kk
-              
+              jfrog rt u target/*.jar "${{ secrets.ARTIFACTORY_REPO }}/$(date +%Y-%m-%d)/" --build-name=my-build --build-number=12 --server-id=artifactory-server-kk
+                           
               
 
     # Optional: Cleanup JFrog configuration
