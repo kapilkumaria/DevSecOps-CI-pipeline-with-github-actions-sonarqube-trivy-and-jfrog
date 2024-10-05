@@ -24,9 +24,11 @@ jobs:
         java-version: '11'
         distribution: 'adopt'
 
-    - name: Set up Maven
-      uses: actions/setup-java@v3
-      with:
-        maven-version: '3.8.4'
+    # Step 3: Build the project using Maven (pre-installed)
+    - name: Build the package
+      run: mvn -B -DskipTests clean package
 
+    # Step 4: Run tests
+    - name: Run tests
+      run: mvn test
     
