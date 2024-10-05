@@ -76,32 +76,3 @@ jobs:
       uses: actions/setup-node@v3
       with:
        node-version: '18'
-
-    # # Step 9: Install Mermaid CLI globally
-    # - name: Install Mermaid CLI
-    #   run: npm install -g @mermaid-js/mermaid-cli
-
-    # # Step 10: Create Mermaid Diagram for Pipeline
-    # - name: Generate Pipeline Diagram
-    #   run: |
-    #    echo "graph TD; \
-    #    Checkout_Code-->Install_Maven; \
-    #    Install_Maven-->Build; \
-    #    Build-->Run_Tests; \
-    #    Run_Tests-->Archive_Test_Reports; \
-    #    Archive_Test_Reports-->SonarQube_Scan;" > pipeline-diagram.mmd
-
-    # # Step 11: Verify Mermaid CLI is installed correctly
-    # - name: Verify Mermaid CLI
-    #   run: mmdc --version
-
-    # # Step 12: Generate PNG from Mermaid Diagram
-    # - name: Generate Pipeline Diagram PNG
-    #   run: mmdc -i pipeline-diagram.mmd -o pipeline-diagram.png
-
-    # # Step 13: Upload Pipeline Diagram PNG
-    # - name: Upload Pipeline Diagram
-    #   uses: actions/upload-artifact@v3
-    #   with:
-    #    name: pipeline-diagram
-    #    path: pipeline-diagram.png
