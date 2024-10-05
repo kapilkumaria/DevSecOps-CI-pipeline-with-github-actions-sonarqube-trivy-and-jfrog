@@ -37,6 +37,17 @@ jobs:
     - name: Build the package
       run: mvn -B -DskipTests clean package
 
+     # Step 5: Check for generated JAR file
+    - name: Check for generated JAR
+      run: |
+       if [ -f target/*.jar ]; then
+         echo "JAR file generated successfully!"
+       else
+         echo "JAR file not found. Build may have failed."
+         exit 1
+       fi
+
+
     # Step 4: Run tests
     - name: Run tests
       run: mvn test
