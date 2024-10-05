@@ -83,20 +83,20 @@ jobs:
         curl -fL https://getcli.jfrog.io | sh
         sudo mv jfrog /usr/local/bin/jfrog
 
-    # # Step 10: Configure JFrog CLI
-    # - name: Configure JFrog CLI
-    #   env:
-    #     JFROG_URL: ${{ secrets.JFROG_URL }}   # Store the JFrog URL in GitHub secrets
-    #     JFROG_USER: ${{ secrets.JFROG_USER }} # Store the JFrog username in GitHub secrets
-    #     JFROG_API_KEY: ${{ secrets.JFROG_API_KEY }} # Store the JFrog API key in GitHub secrets
-    #   run: |
-    #      jfrog config rm artifactory-server-kk --quiet || true
-    #      jfrog config add artifactory-server-kk --artifactory-url=${ARTIFACTORY_URL} --user=${ARTIFACTORY_USER} --password=${ARTIFACTORY_PASSWORD} --interactive=false
-
-    # Configure JFrog Artifactory using environment variables
+    # Step 10: Configure JFrog CLI
     - name: Configure JFrog CLI
+      env:
+        JFROG_URL: ${{ secrets.JFROG_URL }}   # Store the JFrog URL in GitHub secrets
+        JFROG_USER: ${{ secrets.JFROG_USER }} # Store the JFrog username in GitHub secrets
+        JFROG_API_KEY: ${{ secrets.JFROG_API_KEY }} # Store the JFrog API key in GitHub secrets
       run: |
-       ./jfrog rt config --url ${{ secrets.ARTIFACTORY_URL }} --user ${{ secrets.ARTIFACTORY_USER }} --password ${{ secrets.ARTIFACTORY_PASSWORD }}
+         jfrog config rm artifactory-server-kk --quiet || true
+         jfrog config add artifactory-server-kk --artifactory-url=${ARTIFACTORY_URL} --user=${ARTIFACTORY_USER} --password=${ARTIFACTORY_PASSWORD} --interactive=false
+
+    # # Configure JFrog Artifactory using environment variables
+    # - name: Configure JFrog CLI
+    #   run: |
+    #    ./jfrog rt config --url ${{ secrets.ARTIFACTORY_URL }} --user ${{ secrets.ARTIFACTORY_USER }} --password ${{ secrets.ARTIFACTORY_PASSWORD }}
 
     # Upload Maven artifacts to Artifactory
     - name: Upload Maven artifacts
