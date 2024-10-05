@@ -96,4 +96,4 @@ jobs:
     - name: Upload artifact to JFrog Artifactory
       run: |
         
-        jfrog rt u target/*.jar $ARTIFACTORY_REPO/$(date +%Y-%m-%d)/ --build-name=my-build
+        jfrog rt u target/*.jar $ARTIFACTORY_REPO/$(date +%Y-%m-%d)/ --build-name=my-build --build-number=$(date +%Y%m%d%H%M%S)
