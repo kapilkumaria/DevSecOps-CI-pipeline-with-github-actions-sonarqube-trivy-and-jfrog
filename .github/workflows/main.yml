@@ -126,7 +126,7 @@ jobs:
            # Remove the old configuration if it exists, ignore errors if it doesn't.
              jfrog config rm artifactory-server-kk --quiet || true
          
-           # Add new configuration for the Artifactory server
+           # Add new configuration for the Artifactory servers
              jfrog config add artifactory-server-kk --artifactory-url=${JFROG_URL} --user=${JFROG_USER} --password=${JFROG_API_KEY} --interactive=false
              
         
