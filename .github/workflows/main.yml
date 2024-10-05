@@ -93,11 +93,19 @@ jobs:
          jfrog config rm artifactory-server-kk --quiet || true
          jfrog config add artifactory-server-kk --artifactory-url=${ARTIFACTORY_URL} --user=${ARTIFACTORY_USER} --password=${ARTIFACTORY_PASSWORD} --interactive=false
 
-    # Step 11: Upload JAR file too JFrog Artifactory
+    # # Step 11: Upload JAR file too JFrog Artifactory
+    # - name: Upload artifact to JFrog Artifactory
+    #   env:
+    #     JFROG_CLI_LOG_LEVEL: DEBUG  # Enable detailed logging
+    #     ARTIFACTORY_REPO: ${{ secrets.ARTIFACTORY_REPO }}  # Access the Artifactory repo from GitHub secrets
+    #   run: |
+        
+    #     jfrog rt u target/*.jar $ARTIFACTORY_REPO/$(date +%Y-%m-%d)/ --build-name=my-build --build-number=$(date +%Y%m%d%H%M%S)
+
+    # Step 11: Upload JAR file to JFrog Artifactory
     - name: Upload artifact to JFrog Artifactory
       env:
-        JFROG_CLI_LOG_LEVEL: DEBUG  # Enable detailed logging
         ARTIFACTORY_REPO: ${{ secrets.ARTIFACTORY_REPO }}  # Access the Artifactory repo from GitHub secrets
+        JFROG_URL: ${{ secrets.JFROG_URL }}  # Access the JFrog URL from GitHub secrets
       run: |
-        
-        jfrog rt u target/*.jar $ARTIFACTORY_REPO/$(date +%Y-%m-%d)/ --build-name=my-build --build-number=$(date +%Y%m%d%H%M%S)
+        jfrog rt u target/*.jar $ARTIFACTORY_REPO/$(date +%Y-%m-%d)/ --url=$JFROG_URL --build-name=my-build --build-number=$(date +%Y%m%d%H%M%S)
