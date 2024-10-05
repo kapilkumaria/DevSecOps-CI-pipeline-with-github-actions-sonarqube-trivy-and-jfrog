@@ -127,14 +127,14 @@ jobs:
              jfrog config rm artifactory-server-kk --quiet || true
          
            # Add new configuration for the Artifactory server
-             jfrog config add artifactory-server-kk --artifactory-url=${ARTIFACTORY_URL} --user=${ARTIFACTORY_USER} --password=${JFROG_API_KEY} --interactive=false
+             jfrog config add artifactory-server-kk --artifactory-url=${JFROG_URL} --user=${JFROG_USER} --password=${JFROG_API_KEY} --interactive=false
         
     # Upload Maven artifacts to Artifactory
     - name: Upload Maven artifacts
       run: |
               
               jfrog rt u "target/*.jar" "${{ secrets.ARTIFACTORY_REPO }}/$(date +%Y-%m-%d)/" --build-name=my-build --build-number=12 --url=${{ secrets.JFROG_URL }} 
-              # jfrog rt u "target/*.jar" "${{ secrets.JFROG_URL }}/${{ secrets.ARTIFACTORY_REPO }}/$(date +%Y-%m-%d)/" --build-name=my-build --build-number=12 --url=${{ secrets.JFROG_URL }} 
+              
               
 
     # Optional: Cleanup JFrog configuration
