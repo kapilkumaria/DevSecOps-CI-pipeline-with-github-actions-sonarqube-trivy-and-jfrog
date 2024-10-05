@@ -46,3 +46,17 @@ jobs:
       with:
         name: surefire-reports
         path: target/surefire-reports/*.xml
+
+    # Step 5: Archive test reports (JUnit test reports)
+    - name: Archive test reports
+      uses: actions/upload-artifact@v3
+      with:
+         name: surefire-reports
+         path: target/surefire-reports/*.xml
+
+    # Step 6: Archive the built JAR file
+    - name: Archive JAR file
+      uses: actions/upload-artifact@v3
+      with:
+         name: built-jar
+         path: target/*.jar
