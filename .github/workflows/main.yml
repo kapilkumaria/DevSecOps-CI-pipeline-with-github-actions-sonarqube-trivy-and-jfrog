@@ -9,7 +9,7 @@ jobs:
     runs-on: self-hosted
 
     steps:
-    # Step 1: Checkout the code
+    # Step 1: Checkout the codes
     - name: Checkout Code
       uses: actions/checkout@v3
       with:
