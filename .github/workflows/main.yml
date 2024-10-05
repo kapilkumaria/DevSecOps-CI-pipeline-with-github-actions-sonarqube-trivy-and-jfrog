@@ -75,7 +75,7 @@ jobs:
 
     # Step 3: Unzip the artifact to get the JAR
     - name: Unzip the artifact
-      run: unzip built-name.zip -d extracted
+      run: unzip built-name -d extracted
 
 
     # Step 8: SonarQube Scan
