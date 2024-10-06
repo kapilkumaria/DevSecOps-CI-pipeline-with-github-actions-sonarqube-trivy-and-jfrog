@@ -120,7 +120,7 @@ jobs:
               
                         
               
-    # Optional: Cleanup JFrog configuration
+    # Optional: Cleanup JFrog configurations
     - name: Cleanup JFrog config
       run: |
         
